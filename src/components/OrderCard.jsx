@@ -15,7 +15,7 @@ export default function OrderCard (props) {
             <div className="flex items-center gap-2">
                 <img
                     className="w-16 h-16 rounded-lg" 
-                    src={data.images[0]} 
+                    src={data.image} 
                     alt={data.title} />
                 <p>{data.title}</p>
             </div>

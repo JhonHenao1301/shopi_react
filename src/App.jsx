@@ -1,15 +1,13 @@
+import { useRoutes, BrowserRouter } from "react-router-dom"
 
-import Navbar from "./components/Navbar"
 import Home from "./Pages/Home"
 import MyAccount from "./Pages/MyAccount"
 import MyOrder from "./Pages/MyOrder"
 import MyOrders from "./Pages/MyOrders"
 import SignOut from "./Pages/SignOut"
 import NotFound from "./Pages/NotFound"
+import Navbar from "./components/Navbar"
 
-import {
-  useRoutes, BrowserRouter
-} from "react-router-dom"
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -32,7 +30,6 @@ const AppRoutes = () => {
 }
 
 function App() {
-
   return (
     <div className="flex flex-col gap-6">
       <BrowserRouter>

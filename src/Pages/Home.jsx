@@ -1,12 +1,11 @@
 
 import { useContext, useState } from "react"
 import { ShoppingCartContext } from "../Context"
+import Layout from "../Components/Layout"
 import Card from "../components/Card"
-import Layout from "../components/Layout"
-import ProductDetail from "../components/ProductDetail"
-import CheckOutSideMenu from "../components/CheckOutSideMenu"
+import ProductDetail from "../Components/ProductDetail"
+import CheckOutSideMenu from "../Components/CheckOutSideMenu"
 import { BackIcon, DoubleBackIcon, DoubleNextIcon, NextIcon } from "../assets/Icons/Icons"
-// import Loader from "../components/Loader"
 
 export default function Home () {
 
@@ -18,7 +17,7 @@ export default function Home () {
     
     const [ currentPage, setCurrentPage ] = useState(0)
     const totalItems = filteredItems?.length
-    const range = 12
+    const range = 8
 
     const itemsPerPage = filteredItems?.slice(currentPage, currentPage + range)
 
@@ -47,18 +46,19 @@ export default function Home () {
  
     return ( 
         <Layout>
-            <div className='flex items-center justify-center relative w-80 mb-4'>
-                <h1 className="font-medium text-xl">
+            <div className='flex flex-col items-center gap-2 justify-center relative w-full mb-4'>
+                <h1 className='font-bold text-title'>
                     Exclusive products
                 </h1>
+                <h1 className='text-normal text-center'>The best place to find your favorite products</h1>
             </div>
             <input
                 type="text"
                 placeholder='Search a product'
-                className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none'
+                className='rounded-lg border border-black w-80 p-4 mb-8 focus:outline-none'
                 onChange={(event) => setSearch(event.target.value)} 
             />
-            <div className='grid grid-cols-fits gap-8 px-4 justify-center w-full max-w-screen-xl '>
+            <div className='grid grid-cols-fits gap-8 px-8 justify-center w-full '>
                 {
                     itemsPerPage?.length > 0 && !loading
                         ?   itemsPerPage?.map(item => (
@@ -68,7 +68,6 @@ export default function Home () {
                                 />
                             ))
                         : <h1 className="my-4 text-center">No images found</h1>
-                        // :   <Loader />
                 }
             </div>
             <div className="flex gap-6 mt-4 justify-center">

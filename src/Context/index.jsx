@@ -9,6 +9,7 @@ export const ShoppingCartProvider = (({ children }) => {
     const [ filteredItems, setFilteredItems ] = useState(null)
     const [ loading, setLoading ] = useState(null)
     const [ category, setCategory ] = useState('')
+    const [ categoryList, setCategoryList ] = useState([])
     const [ search, setSearch ] = useState('')
 
     const [ isOpenCheckout, setIsOpenCheckout ] = useState(null)
@@ -17,17 +18,25 @@ export const ShoppingCartProvider = (({ children }) => {
     // Shopping Cart · Order
     const [ orders, setOrders ] = useState([])
 
-    // localStorage.setItem('__cart__storages__', [cart])
-    // const cartStorageList = localStorage.getItem('__cart__storages__')
-
     const [ isOpenProductDetail, setIsOpenProductDetail ] = useState(null)
-    const [ productToShow, setProductToShow ] = useState(null) 
+    const [ productToShow, setProductToShow ] = useState({}) 
     
     // Get all data from API
     useEffect(() => {
-        fetch('https://api.escuelajs.co/api/v1/products')
-            .then((response) => response.json())
-            .then(data => setItems(data))
+        fetch('https://fakestoreapi.com/products')
+            .then(response => response.json())
+            .then(data => {
+                setItems(data) 
+            })
+            .catch((error) => console.log(error))
+    }, [])
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products/categories')
+            .then(res=>res.json())
+            .then(data => {
+                setCategoryList(data)
+            })
             .catch((error) => console.log(error))
     }, [])
 
@@ -55,6 +64,7 @@ export const ShoppingCartProvider = (({ children }) => {
             filteredItems,
             loading,
             setCategory,
+            categoryList,
             setSearch,
             isOpenProductDetail,
             setIsOpenProductDetail,

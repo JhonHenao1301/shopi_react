@@ -5,15 +5,15 @@ import { ShoppingCartContext } from "../Context";
 
 export default function Navbar () {
     const [ open, setOpen ] = useState()
-    const { setCategory, cart, setIsOpenCheckout } = useContext(ShoppingCartContext)
+    const { cart, categoryList, setCategory, setIsOpenCheckout } = useContext(ShoppingCartContext)
 
-    const typesProducts = [
-        {name:'All', category: ''},
-        {name:'Electronics', category: 'Electronics'},
-        {name:'Clothes', category: 'Clothes'},
-        {name:'Furniture', category: 'Forniture'},
-        {name:'Shoes', category: 'Shoes'}
-    ]
+    // const typesProducts = [
+    //     {name:'All', category: ''},
+    //     {name:'Electronics', category: 'Electronics'},
+    //     {name:'Clothes', category: 'Clothes'},
+    //     {name:'Furniture', category: 'Forniture'},
+    //     {name:'Shoes', category: 'Shoes'}
+    // ]
 
     const otherActions = [
         {name:'My Orders', link:'/my-orders'},
@@ -39,8 +39,8 @@ export default function Navbar () {
                     onChange={handleChange}
                 >
                     {
-                        typesProducts.map(({name, category}) => (
-                            <option key={name} value={category}>
+                        categoryList?.map((name, index) => (
+                            <option key={index} value={name}>
                                 { name }
                             </option>
                         ))
@@ -48,10 +48,11 @@ export default function Navbar () {
                 </select>
             </div>
             <div 
-                onClick={()=>setOpen(!open)} 
                 className='text-3xl cursor-pointer bg-red lg:hidden'
             >
-                <MenuIcon name={open ? 'close':'menu'} />
+                <button onClick={()=>setOpen(!open)}>
+                    <MenuIcon name={open ? 'close':'menu'} />
+                </button>
             </div>
             <ul className={`navbar-ul ${open ? 'top-16 ': 'top-[-490px]'}`}>
                 <li>

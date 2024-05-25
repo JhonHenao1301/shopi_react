@@ -22,7 +22,7 @@ export default {
     },
     extend: {
       gridTemplateColumns: {
-        'fits' : 'repeat(auto-fit, minmax(200px, 230px))'
+        'fits' : 'repeat(auto-fit, minmax(240px, 280px))'
       }
     },
   },

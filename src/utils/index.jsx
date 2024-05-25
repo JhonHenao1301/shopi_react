@@ -1,6 +1,3 @@
-
-import { AddToCartIcon } from "../assets/Icons/Icons"
-
 /**
  * This function calculates total price of a new order
  * @param {Array} products cartProduct: Array of Objects
